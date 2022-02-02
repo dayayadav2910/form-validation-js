@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@300&display=swap');
+
+*{
+  box-sizing: border-box;
+  font-family: 'Source Serif 4', sans-serif;
+}
+body{
+  background: linear-gradient(to bottom, #3366cc 0%, #003399 100%);
+
+}
+.wrapper{
+  width: 500px;
+  margin: 10px 100px 10px 100px;
+  background: linear-gradient(to bottom, #cc6699 0%, #993333 100%);
+  border-radius: 5px;
+  
+}
+
+h1{
+  padding-top: 20px;
+  text-align: center;
+  color: white;
+}
+form{
+  padding: 50px;
+}
+
+form label{
+  color: white;
+  font-size:3vh;
+}
+
+form input {
+    display:block;
+    padding: 5px;
+    margin: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border-color: white;
+}
+.drop-down select{
+  border-radius: 5px;
+  border-color: white;
+  display: block;
+  width: 100%;    
+  padding: 5px;
+  margin: 10px;
+
+}
+
+.wrapper form span
+{
+  visibility: hidden;
+}
+
+.submit-id input{
+  background: linear-gradient(to bottom, #3366cc 0%, #003399 100%);
+  border-radius: 5px;
+  color: white;
+  border: 2px solid #3366cc;
+
+}
+
+
+
