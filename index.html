@@ -1,63 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/form.css" />
-    <title>Validation Form</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/form.css">
+    <title>Registration Form</title>
 </head>
-
 <body>
-     <div class="wrapper">
-        <h1>Registration Form</h1>
-        <form id="form">
-            <div class="name"> 
-                <label for="name">Name</label>
-                <input type="text" /></div>
-            <div class="email">
-                <label for="emai">Email</label>
-                <input type="email" id="email-id" />
-                <span id="message">Error Message</span>
+    <div class="container">
+        <div class="header">
+            <h2>Registration Form</h2>
+        </div>
+        <form id="form" class="form">
+            <div class="form-control">
+                <label for="username">Name</label>
+                <input type="text" placeholder="Name" id="name" />
+                <small>Error message</small>
             </div>
-            <div class="pnumber">
-                <label for="phone-number">Phone Number</label>
-                <input type="number" id="mobile-number" />
-                <span id="message">Error Message</span>
+            <div class="form-control">
+                <label for="username">Email</label>
+                <input type="email" placeholder="Email" id="email" />
+                <small>Error message</small>
             </div>
-            <div class="dob">
-                <label for="dob">Date of Birth</label>
-                <input type="date" id="dob" />
-                <span id="message">Error Message</span>
+            <div class="form-control">
+                <label for="username">Date</label>
+                <input type="date" placeholder="Date of birth" id="date" />
+                <small>Error message</small>
             </div>
-            <div class="drop-down">
-                <label for="gender">Gender</label>
-                <select name="gender" id="gender">
+            <div class="form-control">
+                <label for="username">Mobile Number</label>
+                <input type="number" placeholder="Contact" id="number"/>
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label for="username">Gender</label>
+                <select name="gender" id="gender" >
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="female">other</option>
                 </select>
+                <small>Error message</small>
             </div>
-
-            <div class="password">
-                <label for="password">Password</label>
-                <input type="password" id="password1" title="" />
-                <span id="message">Error Message</span>
-                <br />
-                <label for="password">Confirm Password</label>
-                <input type="password" id="password2" />
-                <span id="message">Error Message</span>
+            <div class="form-control">
+                <label for="username">Password</label>
+                <input type="password" placeholder="Password" id="password"/>
+                <small>Error message</small>
             </div>
-            <div class="submit-id">
-                <input type="submit" value="Submit" onclick="checkpassword()" />
+            <div class="form-control">
+                <label for="username">Password check</label>
+                <input type="password" placeholder="Confirm Password" id="password2"/>
+                <small>Error message</small>
             </div>
+            <button>Submit</button>
         </form>
     </div>
-    
-
-
 </body>
 <script src="/form.js"></script>
-
 </html>

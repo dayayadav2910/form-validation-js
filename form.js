@@ -1,66 +1,135 @@
-function checkpassword()
-{
+const form = document.getElementById('form');
+const name1 = document.getElementById('name');
+const email = document.getElementById('email');
+const password = document.getElementById('password');
+const password2 = document.getElementById('password2');
+const date1 = document.getElementById('date');
+const gender = document.getElementById('gender').selectedIndex = -1;
+const number  = document.getElementById('number');
 
-    let email = document.getElementById("email-id");
-    let contact = document.getElementById("mobile-number");
-    let passw1 = document.getElementById("password1");
-    let passw2 = document.getElementById("password2");
-    let date = document.getElementById("dob");
-    var d = Date()
+form.addEventListener('submit', e => {
+	e.preventDefault();
+	
+	checkInputs();
+});
 
+function checkInputs() {
+	// trim to remove the whitespaces
+	const name2 = name1.value.trim();
+	const emailValue = email.value.trim();
+	const passwordValue = password.value.trim();
+	const password2Value = password2.value.trim();
+    const date2 = date1.value; 
+    const gender1 = gender.value;
+    const number1 = number.value.trim();
+    let flag = true;
 
-    regexp= /^[6-9][0-9]{9}$/;
-    ailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    var password = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{4,}$/;
-    flag = 0; 
-    if (flag==0)
+	if(name2 !="")
     {
-        if(email.value.match(email))
-        {
-            flag =0 ; 
-        }
-        else
-        {
-            alert("Not a valid Email")
-            flag=1
-        }
-    }
-    if (flag==0)
-    {
-        if(contact.value.match(regexp))
-        {
-            flag =0 ; 
-        }
+        if(!name2.match(/^[A-Za-z ]+$/)){
+            setErrorFor(name1, 'Name does not contain any digit');
+            flag = false;
+        } 
         else{
-            alert("Not a valid number");
-            flag=1;
-        }
+            setSuccessFor(name1);
+
+        } 
     }
-    if(flag ==0){
-        if(date.value>d){
-            alert("Date must be less than today's date");
-        }
-        else
-        {
-            flag = 0
-        }
+    else{
+        setErrorFor(name1, 'Name cannot be blank'); 
+        flag = false;  
     }
-    if(flag==0)
-    {
-        if(passw1.value.match(password) && passw1.value == passw2.value ){
-            alert("Password creted successfully")
-        }
-        else
-        {
-            alert("Password does not match Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters");
-            flag=1
-        }
-    }  
     
-    if(flag == 0)
-    {
-        alert("Data enterd Sucessfull")
+	if(emailValue === '') {
+		setErrorFor(email, 'Email cannot be blank');
+        flag = false;
+	} else if (!isEmail(emailValue)) {
+		setErrorFor(email, 'Not a valid email');
+        flag = false;
+
+	} else {
+		setSuccessFor(email);
+	}
+    if(number1 === '') {
+		setErrorFor(number, 'Number cannot be blank');
+        flag = false;
+
+	}else if (!isphone(number1)) {
+		setErrorFor(number, 'Numbae does not contain more than 10 digits');
+        flag = false;
+
+    }  
+    else {
+		setSuccessFor(number);
+	}
+   
+
+    if(date2 === '') {
+		setErrorFor(date1, 'Date cannot be blank');
+        flag = false;
+
+	}else {
+		setSuccessFor(date1);
+	}
+
+	
+	if(passwordValue === '') {
+		setErrorFor(password, 'Password cannot be blank');
+        flag = false;
+
+	} else {
+		setSuccessFor(password);
+	}
+	
+	if(password2Value === '') {
+		setErrorFor(password2, 'Password2 cannot be blank');
+        flag = false;
+
+	} else if(passwordValue !== password2Value) {
+		setErrorFor(password2, 'Passwords does not match');
+        flag = false;
+
+	} else{
+		setSuccessFor(password2);
+	}
+    if(flag){
+    
+        document.getElementById('form').reset();
+        window.location.href ="/success.html"
     }
+    return flag;
 }
+
+function setErrorFor(input, message) {
+	const formControl = input.parentElement;
+	const small = formControl.querySelector('small');
+	formControl.className = 'form-control error';
+	small.innerText = message;
+}
+
+function setSuccessFor(input) {
+	const formControl = input.parentElement;
+	formControl.className = 'form-control success';
+}
+	
+function isEmail(email) {
+	return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+}
+
+function isphone(number){
+
+    return /^[6-9][0-9]{9}$/.test(number);
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
